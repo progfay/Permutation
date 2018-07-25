@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Permutationクラスは、置換の数学ライブラリです。
  * 副作用のない関数群だけで構成されています。
@@ -228,14 +230,22 @@ public class Permutation {
     public static Permutation[] getPermutationGroup(int degree) throws IlligalPermutationException {
         int num = factorial(degree);
         Permutation[] group = new Permutation[num];
+        ArrayList<Integer> parent = new ArrayList<Integer>();
+        for (int i = 0; i < degree; i++) {
+            parent.add(i);
+        }
         for (int i = 0; i < num; i++) {
+            ArrayList<Integer> list = new ArrayList<Integer>(parent);
+            int[] temp = new int[degree];
             int[] arr = new int[degree];
             int n = i;
-            for (int j = 0; i < degree; j++)
-
-            {
-                arr[degree - j] = n % (j + 1);
-                n /= 2;
+            for (int j = 0; j < degree; j++) {
+                temp[degree - j - 1] = n % (j + 1);
+                n /= (j + 1);
+            }
+            for (int j = 0; j < degree; j++) {
+                arr[j] = list.get(temp[j]);
+                list.remove(temp[j]);
             }
             group[i] = new Permutation(arr);
         }
