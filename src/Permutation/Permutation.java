@@ -226,8 +226,11 @@ public class Permutation {
      * @param degree 次元数
      * @return ランダムな置換
      * @throws IlligalPermutationException 次元数に2未満は指定できません。
+     * @throws IlligalPermutationException 次元数が大きすぎます。(最大値: 12)
      */
     public static Permutation getRandomPermutation(int degree) throws IlligalPermutationException {
+        if (degree < 2) throw new IlligalPermutationException("cannot set less than 2 to degree");
+        if (degree > 12) throw new IlligalPermutationException("cannot set more than 13 to to degree");
         int num = factorial(degree);
         ArrayList<Integer> parent = new ArrayList<Integer>();
         for (int i = 0; i < degree; i++) {
@@ -255,8 +258,11 @@ public class Permutation {
      * @param degree 次元数
      * @return 置換群
      * @throws IlligalPermutationException 次元数に2未満は指定できません。
+     * @throws IlligalPermutationException 次元数が大きすぎます。(最大値: 12)
      */
     public static Permutation[] getPermutationGroup(int degree) throws IlligalPermutationException {
+        if (degree < 2) throw new IlligalPermutationException("cannot set less than 2 to degree");
+        if (degree > 12) throw new IlligalPermutationException("cannot set more than 13 to to degree");
         int num = factorial(degree);
         Permutation[] group = new Permutation[num];
         ArrayList<Integer> parent = new ArrayList<Integer>();
