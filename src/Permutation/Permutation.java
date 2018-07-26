@@ -221,6 +221,35 @@ public class Permutation {
 
 
     /**
+     * 指定された次元数の置換をランダムに生成し、返します。
+     *
+     * @param degree 次元数
+     * @return ランダムな置換
+     * @throws IlligalPermutationException 次元数に2未満は指定できません。
+     */
+    public static Permutation getRandomPermutation(int degree) throws IlligalPermutationException {
+        int num = factorial(degree);
+        ArrayList<Integer> parent = new ArrayList<Integer>();
+        for (int i = 0; i < degree; i++) {
+            parent.add(i);
+        }
+        ArrayList<Integer> list = new ArrayList<Integer>(parent);
+        int[] temp = new int[degree];
+        int[] arr = new int[degree];
+        int n = (int)(Math.random() * num);
+        for (int j = 0; j < degree; j++) {
+            temp[degree - j - 1] = n % (j + 1);
+            n /= (j + 1);
+        }
+        for (int j = 0; j < degree; j++) {
+            arr[j] = list.get(temp[j]);
+            list.remove(temp[j]);
+        }
+        return new Permutation(arr);
+    }
+
+
+    /**
      * 指定された次元数の置換群を算出し、返します。
      *
      * @param degree 次元数
