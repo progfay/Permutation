@@ -371,6 +371,6 @@ class IlligalPermutationException extends RuntimeException {
      * @param str 例外についての説明文
      */
     public IlligalPermutationException(String str) {
-        super("IlligalPermutationException: " + str);
+        super(str);
     }
 }
