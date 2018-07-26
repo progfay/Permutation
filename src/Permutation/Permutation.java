@@ -239,7 +239,7 @@ public class Permutation {
         ArrayList<Integer> list = new ArrayList<Integer>(parent);
         int[] temp = new int[degree];
         int[] arr = new int[degree];
-        int n = (int)(Math.random() * num);
+        int n = (int) (Math.random() * num);
         for (int j = 0; j < degree; j++) {
             temp[degree - j - 1] = n % (j + 1);
             n /= (j + 1);
@@ -312,7 +312,6 @@ public class Permutation {
     protected Object clone() {
         return this.copy();
     }
-
 
     /**
      * このオブジェクトと他のオブジェクトが等しいかどうかを示します。
